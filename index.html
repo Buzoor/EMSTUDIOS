@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EM Studios | Crafting Stories. Building Brands.</title>
-
+    
     <!-- Fonts: Space Grotesk for display headers, Inter for readable body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Local assets directory: place images in assets/ and other files in assets/resources/ -->
-    <!-- Example: <img src="assets/your-image.jpg" alt=""> -->
 
     <!-- Tailwind Configuration -->
     <script>
@@ -64,56 +60,43 @@
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
-            cursor: none;
-            /* Hide default cursor for custom one */
+            cursor: none; /* Hide default cursor for custom one */
         }
 
         /* Custom Scrollbar */
-
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--bg);
         }
-
         ::-webkit-scrollbar-thumb {
             background: #222;
             border-radius: 4px;
         }
-
         ::-webkit-scrollbar-thumb:hover {
             background: #444;
         }
 
         /* Lenis Smooth Scroll base styles */
-
-        html.lenis,
-        html.lenis body {
+        html.lenis, html.lenis body {
             height: auto;
         }
-
         .lenis.lenis-smooth {
             scroll-behavior: auto !important;
         }
-
         .lenis.lenis-smooth [data-lenis-prevent] {
             overscroll-behavior: contain;
         }
-
         .lenis.lenis-stopped {
             overflow: hidden;
         }
-
         .lenis.lenis-scrolling iframe {
             pointer-events: none;
         }
 
         /* Custom Cursor */
-
-        #cursor,
-        #cursor-follower {
+        #cursor, #cursor-follower {
             position: fixed;
             top: 0;
             left: 0;
@@ -123,21 +106,18 @@
             transform: translate(-50%, -50%);
             transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
         }
-
         #cursor {
             width: 8px;
             height: 8px;
             background-color: white;
             mix-blend-mode: difference;
         }
-
         #cursor-follower {
             width: 40px;
             height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.2);
             transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
         }
-
         body.hovering-link #cursor-follower {
             width: 60px;
             height: 60px;
@@ -147,7 +127,6 @@
         }
 
         /* Text Gradient Utility */
-
         .text-gradient {
             background: var(--accent-gradient);
             -webkit-background-clip: text;
@@ -157,14 +136,13 @@
         }
 
         /* Glassmorphism */
-
         .glass-nav {
             background: rgba(14, 14, 16, 0.7);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-
+        
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -172,7 +150,6 @@
         }
 
         /* Abstract Hero Background Effects */
-
         .ambient-light {
             position: absolute;
             border-radius: 50%;
@@ -182,53 +159,21 @@
             z-index: -1;
             pointer-events: none;
         }
-
-        .light-1 {
-            width: 40vw;
-            height: 40vw;
-            background: #FF007F;
-            top: -10%;
-            left: -10%;
-        }
-
-        .light-2 {
-            width: 30vw;
-            height: 30vw;
-            background: #6600FF;
-            bottom: -10%;
-            right: -10%;
-            animation-delay: -5s;
-        }
-
-        .light-3 {
-            width: 50vw;
-            height: 50vw;
-            background: #FF0033;
-            top: 40%;
-            left: 30%;
-            animation-delay: -10s;
-            opacity: 0.1;
-        }
+        .light-1 { width: 40vw; height: 40vw; background: #FF007F; top: -10%; left: -10%; }
+        .light-2 { width: 30vw; height: 30vw; background: #6600FF; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .light-3 { width: 50vw; height: 50vw; background: #FF0033; top: 40%; left: 30%; animation-delay: -10s; opacity: 0.1;}
 
         @keyframes float {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(5%, 5%) scale(1.1);
-            }
-            100% {
-                transform: translate(-5%, -5%) scale(0.9);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 5%) scale(1.1); }
+            100% { transform: translate(-5%, -5%) scale(0.9); }
         }
 
         /* Magnetic Button Glow */
-
         .btn-magnetic {
             position: relative;
             overflow: hidden;
         }
-
         .btn-magnetic::before {
             content: '';
             position: absolute;
@@ -243,57 +188,44 @@
             z-index: -1;
             opacity: 0;
         }
-
         .btn-magnetic:hover::before {
             transform: translate(-50%, -50%) scale(1);
             opacity: 1;
         }
-
         .btn-magnetic:hover {
             color: white;
             border-color: transparent;
         }
 
         /* Image hover scale */
-
         .img-hover-scale {
             transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .group:hover .img-hover-scale {
             transform: scale(1.05);
         }
 
         /* Utility for GSAP initial state */
-
         .reveal-up {
             opacity: 0;
             transform: translateY(40px);
         }
-
+        
         /* Marquee */
-
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
         }
-
         .marquee-content {
             display: inline-block;
             animation: marquee 30s linear infinite;
         }
-
         @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
     </style>
 </head>
-
 <body class="antialiased selection:bg-em-magenta selection:text-white">
 
     <!-- Custom Cursor DOM -->
@@ -305,7 +237,7 @@
             <a href="#" class="text-2xl font-display font-bold tracking-tighter text-white link-hover">
                 EM<span class="text-em-magenta">.</span>
             </a>
-
+            
             <nav class="hidden md:flex gap-8 text-sm font-medium text-em-gray">
                 <a href="#work" class="hover:text-white transition-colors link-hover">Work</a>
                 <a href="#services" class="hover:text-white transition-colors link-hover">Services</a>
@@ -319,11 +251,23 @@
             </a>
 
             <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-white p-2 link-hover" id="mobile-menu-btn">
+            <button class="md:hidden text-white p-2 link-hover relative z-50" id="mobile-menu-btn">
                 <i class="ph ph-list text-2xl"></i>
             </button>
         </div>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-em-black/95 backdrop-blur-xl flex flex-col items-center justify-center translate-y-[-100%] transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]">
+        <nav class="flex flex-col gap-8 text-center text-3xl font-display font-medium w-full px-6">
+            <a href="#work" class="mobile-link text-white hover:text-em-magenta transition-colors">Work</a>
+            <a href="#services" class="mobile-link text-white hover:text-em-magenta transition-colors">Services</a>
+            <a href="#process" class="mobile-link text-white hover:text-em-magenta transition-colors">Process</a>
+            <a href="#pricing" class="mobile-link text-white hover:text-em-magenta transition-colors">Pricing</a>
+            <a href="#about" class="mobile-link text-white hover:text-em-magenta transition-colors">Studio</a>
+            <a href="#contact" class="mobile-link text-em-magenta mt-6 border border-em-magenta/50 rounded-full px-10 py-4 text-lg hover:bg-em-magenta hover:text-white transition-all">Let's Talk</a>
+        </nav>
+    </div>
 
     <main>
         <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -336,13 +280,12 @@
                 <div class="overflow-hidden mb-4">
                     <p class="hero-text text-sm md:text-base text-em-gray uppercase tracking-[0.2em] font-medium reveal-up">Brand Management & Creative Agency</p>
                 </div>
-
+                
                 <h1 class="font-display text-5xl md:text-8xl lg:text-[7rem] font-bold leading-[1.1] tracking-tighter mb-8 max-w-6xl mx-auto flex flex-col items-center">
                     <span class="overflow-hidden inline-block"><span class="block hero-title reveal-up">Crafting Stories.</span></span>
-                    <span class="overflow-hidden inline-block"><span class="block hero-title reveal-up">Building <span class="text-gradient">Brands.</span></span>
-                    </span>
+                    <span class="overflow-hidden inline-block"><span class="block hero-title reveal-up">Building <span class="text-gradient">Brands.</span></span></span>
                 </h1>
-
+                
                 <div class="overflow-hidden mb-12">
                     <p class="hero-text text-lg md:text-xl text-em-gray max-w-2xl mx-auto font-light leading-relaxed reveal-up">
                         We don't just create beautiful visuals—we build brands with purpose, strategy, and cinematic creativity that move people. Strategy first. Story always.
@@ -368,12 +311,8 @@
             </div>
             <style>
                 @keyframes scroll {
-                    0% {
-                        top: -50%;
-                    }
-                    100% {
-                        top: 100%;
-                    }
+                    0% { top: -50%; }
+                    100% { top: 100%; }
                 }
             </style>
         </section>
@@ -385,7 +324,7 @@
                         <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tighter mb-4 section-title reveal-up">Selected Works</h2>
                         <p class="text-em-gray max-w-md text-lg reveal-up">A showcase of strategy, design, and cinematic storytelling crafted for ambitious brands.</p>
                     </div>
-
+                    
                     <!-- Filters -->
                     <div class="flex flex-wrap gap-2 text-sm reveal-up" id="portfolio-filters">
                         <button data-filter="all" class="px-5 py-2 rounded-full border border-white/10 bg-white text-black transition-all link-hover">All</button>
@@ -398,13 +337,12 @@
 
                 <!-- Portfolio Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12" id="portfolio-grid">
-
+                    
                     <!-- Project 1 -->
                     <div class="portfolio-item group cursor-pointer reveal-up" data-category="branding film">
                         <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6">
-                            <!-- Section: Portfolio Project 'Lumina Technologies' hero image -->
-                            <!-- Use assets/lumina-tech-film.jpg or replace with your own image -->
-                            <img src="assets/lumina-tech-film.jpg" alt="Project 1" class="w-full h-full object-cover img-hover-scale">
+                            <!-- Placeholder image representing a premium cinematic shot -->
+                            <img src="https://placehold.co/1200x900/111/fff?text=Lumina+Tech+Film" alt="Project 1" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
                             <!-- Category Badge -->
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
@@ -425,9 +363,7 @@
                     <!-- Project 2 (Offset slightly on large screens) -->
                     <div class="portfolio-item group cursor-pointer md:mt-24 reveal-up" data-category="ai campaign">
                         <div class="relative overflow-hidden rounded-2xl aspect-[3/4] mb-6">
-                            <!-- Section: Portfolio Project 'Aether Apparel' campaign image -->
-                            <!-- Use assets/aether-ai-campaign.jpg or replace with your own image -->
-                            <img src="assets/aether-ai-campaign.jpg" alt="Project 2" class="w-full h-full object-cover img-hover-scale">
+                            <img src="https://placehold.co/900x1200/1a1a24/fff?text=Aether+AI+Campaign" alt="Project 2" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
                                 AI Campaign
                             </div>
@@ -446,9 +382,7 @@
                     <!-- Project 3 -->
                     <div class="portfolio-item group cursor-pointer reveal-up" data-category="branding">
                         <div class="relative overflow-hidden rounded-2xl aspect-[16/9] mb-6">
-                            <!-- Section: Portfolio Project 'Nexus Financial' branding image -->
-                            <!-- Use assets/nexus-financial.jpg or replace with your own image -->
-                            <img src="assets/nexus-financial.jpg" alt="Project 3" class="w-full h-full object-cover img-hover-scale">
+                            <img src="https://placehold.co/1600x900/0a0a0a/eaeaea?text=Nexus+Financial" alt="Project 3" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
                                 Strategy & Positioning
                             </div>
@@ -467,9 +401,7 @@
                     <!-- Project 4 -->
                     <div class="portfolio-item group cursor-pointer md:mt-24 reveal-up" data-category="film">
                         <div class="relative overflow-hidden rounded-2xl aspect-square mb-6">
-                            <!-- Section: Portfolio Project 'Origins' documentary cover image -->
-                            <!-- Use assets/origins-documentary.jpg or replace with your own image -->
-                            <img src="assets/origins-documentary.jpg" alt="Project 4" class="w-full h-full object-cover img-hover-scale">
+                            <img src="https://placehold.co/1000x1000/221/fff?text=Origin+Documentary" alt="Project 4" class="w-full h-full object-cover img-hover-scale">
                             <!-- Play button overlay -->
                             <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
                                 <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
@@ -508,7 +440,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
+                    
                     <!-- Service Card -->
                     <div class="glass-card p-8 rounded-2xl group hover:border-em-purple/50 transition-colors duration-500 reveal-up relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-32 h-32 bg-em-purple/20 blur-[50px] rounded-full group-hover:bg-em-purple/40 transition-all duration-700 -mr-10 -mt-10"></div>
@@ -565,7 +497,7 @@
         <section id="process" class="py-32 relative bg-em-black">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
-
+                    
                     <!-- Sticky Title Column -->
                     <div class="lg:col-span-4 lg:h-screen lg:sticky lg:top-0 pt-20 flex flex-col justify-center">
                         <p class="text-em-magenta text-sm font-bold tracking-widest uppercase mb-4 reveal-up">Our Methodology</p>
@@ -575,9 +507,9 @@
 
                     <!-- Scrolling Timeline -->
                     <div class="lg:col-span-8 lg:py-40">
-
+                        
                         <div class="relative border-l border-white/10 ml-4 md:ml-12 pl-8 md:pl-16 space-y-32 process-timeline">
-
+                            
                             <!-- Step 1 -->
                             <div class="relative process-step">
                                 <div class="absolute -left-[33px] md:-left-[65px] top-0 w-16 h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-xl font-bold text-white z-10 process-icon transition-colors">
@@ -612,9 +544,7 @@
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Create</h3>
                                 <p class="text-em-gray text-lg max-w-xl leading-relaxed mb-8">The magic happens here. Identity design, cinematic production, AI exploration, and copywriting merge to bring the strategy to life visually and verbally.</p>
                                 <div class="w-full max-w-xl h-48 bg-em-surface rounded-2xl border border-white/10 overflow-hidden relative">
-                                    <!-- Section: Process Timeline 'Create' visualization image -->
-                                    <!-- Use assets/creative-process.jpg or replace with your own image -->
-                                    <img src="assets/creative-process.jpg" class="w-full h-full object-cover opacity-50 mix-blend-luminosity">
+                                    <img src="https://placehold.co/800x400/222/555?text=Creative+Process" class="w-full h-full object-cover opacity-50 mix-blend-luminosity">
                                 </div>
                             </div>
 
@@ -640,36 +570,32 @@
             <div class="max-w-[1600px] mx-auto px-6 md:px-12 mb-12">
                 <h2 class="font-display text-3xl md:text-5xl font-bold tracking-tighter reveal-up">Visual Archives</h2>
             </div>
-
+            
             <!-- Scrolling Marquee Gallery -->
             <div class="flex flex-col gap-6">
                 <!-- Track 1 (Moves Left) -->
                 <div class="flex gap-6 w-[200vw] animate-[marquee_40s_linear_infinite] hover:[animation-play-state:paused]">
-                    <!-- Section: Gallery Marquee Track 1 images -->
-                    <!-- Use local assets/design-1.jpg, assets/poster-a.jpg, assets/campaign-shot.jpg, assets/logo-mark.jpg -->
-                    <img src="assets/design-1.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/poster-a.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/campaign-shot.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/logo-mark.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/600x400/111/fff?text=Design+1" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/400x400/1a1a1a/fff?text=Poster+A" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/800x400/0f0f0f/fff?text=Campaign+Shot" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/500x400/222/fff?text=Logo+Mark" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                     <!-- Duplicates for loop -->
-                    <img src="assets/design-1.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/poster-a.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/600x400/111/fff?text=Design+1" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/400x400/1a1a1a/fff?text=Poster+A" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                 </div>
-
+                
                 <!-- Track 2 (Moves Right) -->
                 <div class="flex gap-6 w-[200vw] animate-[marquee_50s_linear_infinite_reverse] hover:[animation-play-state:paused] -ml-[50vw]">
-                    <!-- Section: Gallery Marquee Track 2 images -->
-                    <!-- Use local assets/3d-render.jpg, assets/editorial-layout.jpg, assets/iconography.jpg, assets/packaging.jpg -->
-                    <img src="assets/3d-render.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/editorial-layout.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/iconography.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/packaging.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/500x400/111/fff?text=3D+Render" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/800x400/2a2a2a/fff?text=Editorial+Layout" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/400x400/050505/fff?text=Iconography" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/700x400/1e1e1e/fff?text=Packaging" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                     <!-- Duplicates for loop -->
-                    <img src="assets/3d-render.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                    <img src="assets/editorial-layout.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/500x400/111/fff?text=3D+Render" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="https://placehold.co/800x400/2a2a2a/fff?text=Editorial+Layout" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                 </div>
             </div>
-
+            
             <div class="mt-12 text-center">
                 <a href="#" class="text-sm text-em-gray hover:text-white uppercase tracking-widest font-medium transition-colors link-hover">View Full Design Archive</a>
             </div>
@@ -683,7 +609,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-
+                    
                     <!-- Starter -->
                     <div class="glass-card p-8 rounded-3xl border border-white/5 reveal-up">
                         <h3 class="font-display text-2xl font-bold mb-2">Starter</h3>
@@ -704,7 +630,7 @@
                     <div class="glass-card p-1 rounded-3xl relative reveal-up transform md:-translate-y-4">
                         <!-- Gradient Border Effect -->
                         <div class="absolute inset-0 bg-em-gradient rounded-3xl opacity-50 blur-[2px]"></div>
-
+                        
                         <div class="bg-em-black p-8 rounded-[23px] relative h-full flex flex-col">
                             <div class="absolute top-4 right-4 bg-em-magenta/20 text-em-magenta text-xs px-3 py-1 rounded-full font-medium">Most Popular</div>
                             <h3 class="font-display text-2xl font-bold mb-2">Growth</h3>
@@ -747,9 +673,7 @@
         <section id="about" class="py-32 relative bg-em-black">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 items-center">
                 <div class="w-full md:w-1/2 reveal-up">
-                    <!-- Section: About Studio 'Studio Culture' image -->
-                    <!-- Use assets/studio-culture.jpg or replace with your own image -->
-                    <img src="assets/studio-culture.jpg" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover grayscale opacity-80">
+                    <img src="https://placehold.co/800x1000/111/333?text=Studio+Culture" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover grayscale opacity-80">
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tighter mb-8 reveal-up">Modern African Excellence on a Global Stage.</h2>
@@ -759,7 +683,7 @@
                     <p class="text-em-gray text-lg mb-10 leading-relaxed reveal-up">
                         Based in Lagos, creating for the world. We embrace modern technology—from AI workflows to cutting-edge web development—to ensure our craft remains unparalleled.
                     </p>
-
+                    
                     <div class="grid grid-cols-2 gap-8 border-t border-white/10 pt-10 reveal-up">
                         <div>
                             <div class="text-4xl font-display font-bold text-white mb-2">50+</div>
@@ -799,7 +723,7 @@
             <div class="max-w-[1200px] mx-auto px-6 md:px-12 text-center">
                 <h2 class="font-display text-5xl md:text-8xl font-bold tracking-tighter mb-6 reveal-up">Let's Build Something <br><span class="text-gradient">Remarkable.</span></h2>
                 <p class="text-em-gray text-lg md:text-xl mb-16 max-w-2xl mx-auto reveal-up">Ready to transform your brand? Fill out the form below or email us directly at <a href="mailto:hello@emstudios.com" class="text-white border-b border-white hover:text-em-magenta hover:border-em-magenta transition-colors link-hover">hello@emstudios.com</a></p>
-
+                
                 <form class="max-w-3xl mx-auto text-left space-y-12 reveal-up">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div class="relative">
@@ -811,19 +735,19 @@
                             <label for="email" class="absolute left-0 -top-6 text-sm text-em-gray peer-placeholder-shown:text-base peer-placeholder-shown:text-em-gray/50 peer-placeholder-shown:top-4 transition-all peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white">Email Address</label>
                         </div>
                     </div>
-
+                    
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div class="relative">
                             <input type="text" id="company" class="w-full bg-transparent border-b border-white/20 py-4 text-white placeholder-transparent focus:outline-none focus:border-white peer transition-colors" placeholder="Company">
                             <label for="company" class="absolute left-0 -top-6 text-sm text-em-gray peer-placeholder-shown:text-base peer-placeholder-shown:text-em-gray/50 peer-placeholder-shown:top-4 transition-all peer-focus:-top-6 peer-focus:text-sm peer-focus:text-white">Company / Brand</label>
                         </div>
                         <div class="relative">
-                            <select id="budget" class="w-full bg-em-black border-b border-white/20 py-4 text-white focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer">
-                                <option value="" disabled selected class="text-em-gray">Select Budget Range</option>
-                                <option value="5k-10k">$5k - $10k</option>
-                                <option value="10k-25k">$10k - $25k</option>
-                                <option value="25k-50k">$25k - $50k</option>
-                                <option value="50k+">$50k+</option>
+                            <select id="budget" class="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-white transition-colors appearance-none cursor-pointer">
+                                <option value="" disabled selected class="text-em-gray bg-em-black">Select Budget Range</option>
+                                <option value="5k-10k" class="bg-em-black">$5k - $10k</option>
+                                <option value="10k-25k" class="bg-em-black">$10k - $25k</option>
+                                <option value="25k-50k" class="bg-em-black">$25k - $50k</option>
+                                <option value="50k+" class="bg-em-black">$50k+</option>
                             </select>
                             <i class="ph ph-caret-down absolute right-0 top-1/2 -translate-y-1/2 text-em-gray pointer-events-none"></i>
                         </div>
@@ -843,6 +767,47 @@
             </div>
         </section>
 
+        <!-- Project Detail Modal -->
+        <div id="project-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center px-4 md:px-12 py-12">
+            <div id="modal-overlay" class="absolute inset-0 bg-em-black/90 backdrop-blur-md opacity-0 transition-opacity duration-300"></div>
+            <div id="modal-content" class="relative bg-em-surface border border-white/10 rounded-3xl w-full max-w-6xl max-h-[90vh] overflow-y-auto opacity-0 scale-95 transition-all duration-300 shadow-2xl flex flex-col md:flex-row">
+                
+                <!-- Close Button -->
+                <button id="modal-close" class="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:text-em-magenta hover:bg-white/10 transition-all z-20 cursor-none link-hover">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+
+                <!-- Modal Image Section -->
+                <div class="w-full md:w-1/2 h-[40vh] md:h-auto min-h-[300px] relative">
+                    <img id="modal-img" src="" alt="Project Presentation" class="absolute inset-0 w-full h-full object-cover">
+                    <!-- Edge fade for smoother transition on desktop -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-em-surface via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-em-surface"></div>
+                </div>
+
+                <!-- Modal Content Section -->
+                <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center">
+                    <div id="modal-category" class="text-em-magenta text-sm font-bold tracking-widest uppercase mb-4">Category</div>
+                    <h3 id="modal-title" class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">Project Title</h3>
+                    <p id="modal-desc" class="text-em-gray text-lg leading-relaxed mb-8">Detailed description.</p>
+                    
+                    <div class="grid grid-cols-2 gap-6 border-t border-white/10 pt-8 mb-10">
+                        <div>
+                            <h4 class="text-white text-sm font-bold mb-2 font-display uppercase tracking-wider">Client</h4>
+                            <p class="text-em-gray text-sm" id="modal-client">Confidential</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white text-sm font-bold mb-2 font-display uppercase tracking-wider">Services</h4>
+                            <p class="text-em-gray text-sm">Strategy, Design, Production</p>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 border border-white/20 rounded-full text-white font-medium hover:bg-white hover:text-black transition-all duration-300 link-hover w-max">
+                        Discuss a similar project <i class="ph ph-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <footer class="bg-em-surface pt-20 pb-10 border-t border-white/10">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-20">
@@ -858,7 +823,7 @@
                             <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph-logo-behance text-xl"></i></a>
                         </div>
                     </div>
-
+                    
                     <div>
                         <h4 class="font-display font-bold mb-6 text-white">Navigation</h4>
                         <ul class="space-y-3 text-em-gray text-sm">
@@ -869,7 +834,7 @@
                             <li><a href="#about" class="hover:text-white transition-colors link-hover">Studio</a></li>
                         </ul>
                     </div>
-
+                    
                     <div>
                         <h4 class="font-display font-bold mb-6 text-white">Contact</h4>
                         <ul class="space-y-3 text-em-gray text-sm">
@@ -879,7 +844,7 @@
                         </ul>
                     </div>
                 </div>
-
+                
                 <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs text-em-gray/60">
                     <p>&copy; 2026 EM Studios. All rights reserved.</p>
                     <div class="flex gap-4 mt-4 md:mt-0">
@@ -922,25 +887,23 @@
 
             // Sync GSAP with Lenis
             lenis.on('scroll', ScrollTrigger.update)
-            gsap.ticker.add((time) => {
-                lenis.raf(time * 1000)
+            gsap.ticker.add((time)=>{
+              lenis.raf(time * 1000)
             })
             gsap.ticker.lagSmoothing(0, 0)
 
             // 2. Custom Cursor Logic
             const cursor = document.getElementById('cursor');
             const follower = document.getElementById('cursor-follower');
-            let posX = 0,
-                posY = 0;
-            let mouseX = 0,
-                mouseY = 0;
+            let posX = 0, posY = 0;
+            let mouseX = 0, mouseY = 0;
 
             gsap.to({}, 0.016, {
                 repeat: -1,
                 onRepeat: function() {
                     posX += (mouseX - posX) / 9;
                     posY += (mouseY - posY) / 9;
-
+                    
                     gsap.set(follower, {
                         css: {
                             left: posX,
@@ -970,13 +933,13 @@
 
             // 3. Magnetic Button Effect
             const magneticButtons = document.querySelectorAll('.magnetic');
-
+            
             magneticButtons.forEach(btn => {
                 btn.addEventListener('mousemove', function(e) {
                     const rect = this.getBoundingClientRect();
                     const x = e.clientX - rect.left - rect.width / 2;
                     const y = e.clientY - rect.top - rect.height / 2;
-
+                    
                     gsap.to(this, {
                         x: x * 0.3,
                         y: y * 0.3,
@@ -984,7 +947,7 @@
                         ease: "power2.out"
                     });
                 });
-
+                
                 btn.addEventListener('mouseleave', function(e) {
                     gsap.to(this, {
                         x: 0,
@@ -996,29 +959,25 @@
             });
 
             // 4. Initial Load Animations (Hero Section)
-            const heroTimeline = gsap.timeline({
-                defaults: {
-                    ease: "power4.out"
-                }
-            });
-
+            const heroTimeline = gsap.timeline({ defaults: { ease: "power4.out" } });
+            
             heroTimeline.to(".hero-title", {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1.5,
-                    stagger: 0.2,
-                    delay: 0.2
-                })
-                .to(".hero-text", {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    stagger: 0.1
-                }, "-=1");
+                y: 0,
+                opacity: 1,
+                duration: 1.5,
+                stagger: 0.2,
+                delay: 0.2
+            })
+            .to(".hero-text", {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.1
+            }, "-=1");
 
             // 5. Scroll Revel Animations
             const revealElements = document.querySelectorAll('.reveal-up');
-
+            
             revealElements.forEach((el) => {
                 gsap.to(el, {
                     scrollTrigger: {
@@ -1037,24 +996,16 @@
             const processSteps = document.querySelectorAll('.process-step');
             processSteps.forEach((step, index) => {
                 const icon = step.querySelector('.process-icon');
-
+                
                 ScrollTrigger.create({
                     trigger: step,
                     start: "top center",
                     end: "bottom center",
                     onEnter: () => {
-                        gsap.to(icon, {
-                            backgroundColor: '#FF007F',
-                            borderColor: '#FF007F',
-                            duration: 0.3
-                        }); // EM Magenta
+                        gsap.to(icon, { backgroundColor: '#FF007F', borderColor: '#FF007F', duration: 0.3 }); // EM Magenta
                     },
                     onLeaveBack: () => {
-                        gsap.to(icon, {
-                            backgroundColor: '#050505',
-                            borderColor: 'rgba(255,255,255,0.2)',
-                            duration: 0.3
-                        });
+                        gsap.to(icon, { backgroundColor: '#050505', borderColor: 'rgba(255,255,255,0.2)', duration: 0.3 });
                     }
                 });
             });
@@ -1077,7 +1028,7 @@
 
                     portfolioItems.forEach(item => {
                         const categories = item.getAttribute('data-category').split(' ');
-
+                        
                         if (filterValue === 'all' || categories.includes(filterValue)) {
                             gsap.to(item, {
                                 autoAlpha: 1, // handles opacity and visibility
@@ -1092,23 +1043,113 @@
                                 scale: 0.95,
                                 duration: 0.4,
                                 ease: "power2.in",
-                                onComplete: () => {
-                                    item.style.display = 'none';
-                                }
+                                onComplete: () => { item.style.display = 'none'; }
                             });
                         }
                     });
-
+                    
                     // Refresh ScrollTrigger layout after filtering
                     setTimeout(() => ScrollTrigger.refresh(), 500);
                 });
             });
 
-            // Mobile Menu Toggle (Basic implementation)
+            // 8. Mobile Menu Logic
             const mobileBtn = document.getElementById('mobile-menu-btn');
-            // Add mobile menu logic if needed, keeping it simple for desktop focus
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            let menuOpen = false;
+
+            function toggleMobileMenu() {
+                menuOpen = !menuOpen;
+                if(menuOpen) {
+                    mobileMenu.classList.remove('translate-y-[-100%]');
+                    mobileBtn.innerHTML = '<i class="ph ph-x text-2xl"></i>';
+                    lenis.stop(); // Prevent background scrolling
+                } else {
+                    mobileMenu.classList.add('translate-y-[-100%]');
+                    mobileBtn.innerHTML = '<i class="ph ph-list text-2xl"></i>';
+                    lenis.start();
+                }
+            }
+
+            mobileBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if(menuOpen) toggleMobileMenu();
+                });
+            });
+
+            // 9. Project Detail Modal Logic
+            const modal = document.getElementById('project-modal');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContent = document.getElementById('modal-content');
+            const modalClose = document.getElementById('modal-close');
+            
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const modalCategory = document.getElementById('modal-category');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalClient = document.getElementById('modal-client');
+
+            // Attach click listeners to all portfolio items
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    // Extract data from the clicked card
+                    const imgNode = item.querySelector('img');
+                    const titleNode = item.querySelector('h3');
+                    const catNode = item.querySelector('.glass-card');
+                    const descNode = item.querySelector('p');
+
+                    if(imgNode) modalImg.src = imgNode.src;
+                    if(titleNode) {
+                        modalTitle.innerText = titleNode.innerText;
+                        modalClient.innerText = titleNode.innerText + " Inc."; // Mock client name
+                    }
+                    if(catNode) modalCategory.innerText = catNode.innerText;
+                    
+                    // Add some premium filler copy to the description
+                    if(descNode) {
+                        modalDesc.innerText = descNode.innerText + " We approached this challenge with a strategy-first mindset, exploring deep narrative arcs before translating them into a breathtaking visual identity. The result is a cohesive, modern brand experience tailored for global impact.";
+                    }
+
+                    // Show the modal
+                    modal.classList.remove('hidden');
+                    
+                    // Small delay to allow 'display: block' to apply before animating opacity
+                    setTimeout(() => {
+                        modalOverlay.classList.remove('opacity-0');
+                        modalContent.classList.remove('opacity-0', 'scale-95');
+                    }, 10);
+                    
+                    lenis.stop(); // Stop background scrolling while modal is open
+                });
+            });
+
+            // Close modal function
+            function closeModal() {
+                modalOverlay.classList.add('opacity-0');
+                modalContent.classList.add('opacity-0', 'scale-95');
+                
+                // Wait for CSS transition to finish before hiding element
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    lenis.start(); // Resume background scrolling
+                }, 300);
+            }
+
+            modalClose.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
+            
+            // Close modal on escape key press
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+
         });
     </script>
 </body>
-
 </html>
