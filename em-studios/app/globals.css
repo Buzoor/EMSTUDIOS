@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-900: #030303;
+  --em-magenta: #b6009a;
+  --em-purple: #6e0fa2;
+  --em-crimson: #e0282f;
+  --em-pink: #ff6fb6;
+}
+
+/* Film grain overlay (subtle) */
+.body-grain:after{
+  content: "";
+  position:fixed;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><filter id='g'><feTurbulence baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23g)' opacity='0.35' /></svg>");
+}
+
+html,body,#root{height:100%}
+body{
+  background: var(--bg-900);
+  color: #f7f7f7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Background helper for subtle brand gradient energy */
+.bg-energy{
+  background-image: radial-gradient(600px 420px at var(--x, 10%) var(--y, 20%), rgba(182,0,154,0.12), transparent 18%), radial-gradient(520px 360px at calc(var(--x2,80%)) calc(var(--y2,80%)), rgba(224,40,47,0.12), transparent 20%);
+}
+
+/* Utility: cinematic headings */
+.huge-hero{font-weight:800;line-height:0.9;letter-spacing:-0.02em}
+
+/* Respect reduce motion */
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+}
