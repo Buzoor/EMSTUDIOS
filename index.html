@@ -386,9 +386,11 @@
         .video-lightbox-panel {
             position: relative;
             width: min(1100px, 92vw);
+            height: min(620px, 60vh);
             background: rgba(14,14,16,0.96);
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 1.75rem;
+            aspect-ratio: 16 / 9;
             overflow: hidden;
             box-shadow: 0 40px 120px rgba(0,0,0,0.55);
         }
@@ -400,10 +402,12 @@
         }
 
         .video-lightbox-frame iframe {
-            width: 100%;
-            height: 100%;
+            width: min(1100px, 92vw);
+            height: min(620px, 60vh);
             border: 0;
+            aspect-ratio: 16 / 9;
             display: block;
+            padding: 1rem;
         }
 
         .video-lightbox-close {
