@@ -56,10 +56,16 @@
             --accent-gradient: linear-gradient(135deg, #FF007F, #6600FF, #FF0033);
         }
 
+        html {
+            scroll-behavior: auto;
+            overscroll-behavior: none;
+        }
+
         body {
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
+            overscroll-behavior: none;
             cursor: none; /* Hide default cursor for custom one */
         }
 
@@ -264,6 +270,27 @@
             min-height: 360px;
             display: block;
             border: 0;
+        }
+
+        @media (max-width: 767px) {
+            .process-step > .process-icon {
+                width: 2.75rem;
+                height: 2.75rem;
+                left: -1.2rem;
+                font-size: 0.875rem;
+            }
+
+            .video-frame iframe {
+                min-height: 220px;
+            }
+
+            .video-open-button {
+                right: 0.75rem;
+                bottom: 0.75rem;
+                padding: 0.55rem 0.7rem;
+                font-size: 0.52rem;
+                letter-spacing: 0.12em;
+            }
         }
 
         .video-meta {
@@ -776,7 +803,7 @@
                             
                             <!-- Step 1 -->
                             <div class="relative process-step">
-                                <div class="absolute -left-[33px] md:-left-[65px] top-0 w-16 h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-xl font-bold text-white z-10 process-icon transition-colors">
+                                <div class="absolute -left-[24px] md:-left-[65px] top-0 w-12 h-12 md:w-16 md:h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-base md:text-xl font-bold text-white z-10 process-icon transition-colors">
                                     01
                                 </div>
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Discover</h3>
@@ -789,7 +816,7 @@
 
                             <!-- Step 2 -->
                             <div class="relative process-step">
-                                <div class="absolute -left-[33px] md:-left-[65px] top-0 w-16 h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-xl font-bold text-white z-10 process-icon transition-colors">
+                                <div class="absolute -left-[24px] md:-left-[65px] top-0 w-12 h-12 md:w-16 md:h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-base md:text-xl font-bold text-white z-10 process-icon transition-colors">
                                     02
                                 </div>
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Strategy</h3>
@@ -802,7 +829,7 @@
 
                             <!-- Step 3 -->
                             <div class="relative process-step">
-                                <div class="absolute -left-[33px] md:-left-[65px] top-0 w-16 h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-xl font-bold text-white z-10 process-icon transition-colors">
+                                <div class="absolute -left-[24px] md:-left-[65px] top-0 w-12 h-12 md:w-16 md:h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-base md:text-xl font-bold text-white z-10 process-icon transition-colors">
                                     03
                                 </div>
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Create</h3>
@@ -814,7 +841,7 @@
 
                             <!-- Step 4 -->
                             <div class="relative process-step">
-                                <div class="absolute -left-[33px] md:-left-[65px] top-0 w-16 h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-xl font-bold text-white z-10 process-icon transition-colors">
+                                <div class="absolute -left-[24px] md:-left-[65px] top-0 w-12 h-12 md:w-16 md:h-16 bg-em-black rounded-full border border-white/20 flex items-center justify-center font-display text-base md:text-xl font-bold text-white z-10 process-icon transition-colors">
                                     04
                                 </div>
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Launch & Grow</h3>
@@ -941,7 +968,7 @@
         <section id="about" class="py-32 relative bg-em-black">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 items-center">
                 <div class="w-full md:w-1/2 reveal-up">
-                    <img src="/assets/images/projects/p06/hero.jpg" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover grayscale opacity-80">
+                    <img src="/assets/images/projects/p06/hero.png" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover  opacity-80">
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tighter mb-8 reveal-up">Modern African Excellence on a Global Stage.</h2>
@@ -1136,14 +1163,14 @@
 
             // 1. Initialize Lenis Smooth Scroll
             const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing function
+                duration: 0.35,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 direction: 'vertical',
                 gestureDirection: 'vertical',
-                smooth: true,
+                smooth: false,
                 mouseMultiplier: 1,
                 smoothTouch: false,
-                touchMultiplier: 2,
+                touchMultiplier: 1,
                 infinite: false,
             })
 
@@ -1153,7 +1180,7 @@
             }
             requestAnimationFrame(raf)
 
-            // Sync GSAP with Lenis
+            // Sync GSAP with Lenis only when smooth scrolling is enabled; otherwise avoid forced auto-scroll.
             lenis.on('scroll', ScrollTrigger.update)
             gsap.ticker.add((time)=>{
               lenis.raf(time * 1000)
