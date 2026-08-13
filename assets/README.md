@@ -7,32 +7,32 @@ Place your images and video files here using the following recommended structure
   - logo-mark.jpg (supporting brand mark)
 
 - /assets/images/projects/
-  - p01-ember-launch/
+  - p01/
+    - hero.png
+    - gallery-01.png
+    - gallery-02.jpg
+    - gallery-03.jpg
+  - p02/
     - hero.jpg
     - gallery-01.jpg
     - gallery-02.jpg
     - gallery-03.jpg
-  - p02-noir-film/
+  - p03/
     - hero.jpg
     - gallery-01.jpg
     - gallery-02.jpg
     - gallery-03.jpg
-  - p03-studio-alchemy/
+  - p04/
     - hero.jpg
     - gallery-01.jpg
     - gallery-02.jpg
     - gallery-03.jpg
-  - p04-aurora-social/
+  - p05/
     - hero.jpg
     - gallery-01.jpg
     - gallery-02.jpg
     - gallery-03.jpg
-  - p05-flare-motion/
-    - hero.jpg
-    - gallery-01.jpg
-    - gallery-02.jpg
-    - gallery-03.jpg
-  - p06-sierra-studio/
+  - p06/
     - hero.jpg
     - gallery-01.jpg
     - gallery-02.jpg

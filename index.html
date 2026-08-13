@@ -224,6 +224,160 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+
+        .video-carousel {
+            overflow: hidden;
+        }
+
+        .video-track {
+            display: flex;
+            width: 100%;
+            will-change: transform;
+        }
+
+        .video-slide {
+            min-width: 100%;
+            padding: 0 0.25rem;
+        }
+
+        .video-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.75rem;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: #0b0b0d;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+        }
+
+        .video-frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,0,127,0.15), rgba(102,0,255,0.15), rgba(255,0,51,0.12));
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            display: block;
+            border: 0;
+        }
+
+        .video-meta {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .video-dot.active {
+            background: linear-gradient(135deg, #FF007F, #6600FF, #FF0033);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .video-open-button {
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 3;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(5,5,5,0.55);
+            color: white;
+            padding: 0.72rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .video-open-button:hover {
+            background: white;
+            color: #050505;
+            border-color: transparent;
+        }
+
+        .video-lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .video-lightbox.open {
+            display: flex;
+        }
+
+        .video-lightbox-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(5,5,5,0.86);
+            backdrop-filter: blur(12px);
+        }
+
+        .video-lightbox-panel {
+            position: relative;
+            width: min(1100px, 92vw);
+            background: rgba(14,14,16,0.96);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.75rem;
+            overflow: hidden;
+            box-shadow: 0 40px 120px rgba(0,0,0,0.55);
+        }
+
+        .video-lightbox-frame {
+            position: relative;
+            background: #09090a;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-lightbox-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .video-lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 2;
+            width: 2.8rem;
+            height: 2.8rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(5,5,5,0.65);
+            color: white;
+            display: grid;
+            place-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .video-lightbox-close:hover {
+            background: white;
+            color: #050505;
+            border-color: transparent;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-em-magenta selection:text-white">
@@ -235,7 +389,7 @@
     <header class="fixed top-0 w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-[1600px] mx-auto px-6 md:px-12 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center gap-4 link-hover">
-                            <img src="/assets/images/brand/logo-primary.png" alt="EM Studios" class="h-8 md:h-10 object-contain" />
+                            <img src="/assets/images/brand/logo-primary.svg" alt="EM Studios" class="h-8 md:h-10 object-contain" />
             </a>
             
             <nav class="hidden md:flex gap-8 text-sm font-medium text-em-gray">
@@ -342,7 +496,7 @@
                     <div class="portfolio-item group cursor-pointer reveal-up" data-category="branding film">
                         <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-6">
                             <!-- Placeholder image representing a premium cinematic shot -->
-                            <img src="/assets/images/projects/p01-ember-launch/hero.jpg" alt="Lumina Technologies" class="w-full h-full object-cover img-hover-scale">
+                            <img src="/assets/images/projects/p01/hero.png" alt="Lumina Technologies" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
                             <!-- Category Badge -->
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
@@ -363,7 +517,7 @@
                     <!-- Project 2 (Offset slightly on large screens) -->
                     <div class="portfolio-item group cursor-pointer md:mt-24 reveal-up" data-category="ai campaign">
                         <div class="relative overflow-hidden rounded-2xl aspect-[3/4] mb-6">
-                            <img src="/assets/images/projects/p04-aurora-social/hero.jpg" alt="Aether Apparel" class="w-full h-full object-cover img-hover-scale">
+                            <img src="/assets/images/projects/p04/hero.jpg" alt="Aether Apparel" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
                                 AI Campaign
                             </div>
@@ -382,7 +536,7 @@
                     <!-- Project 3 -->
                     <div class="portfolio-item group cursor-pointer reveal-up" data-category="branding">
                         <div class="relative overflow-hidden rounded-2xl aspect-[16/9] mb-6">
-                            <img src="/assets/images/projects/p03-studio-alchemy/hero.jpg" alt="Nexus Financial" class="w-full h-full object-cover img-hover-scale">
+                            <img src="/assets/images/projects/p03/hero.jpg" alt="Nexus Financial" class="w-full h-full object-cover img-hover-scale">
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md">
                                 Strategy & Positioning
                             </div>
@@ -401,13 +555,9 @@
                     <!-- Project 4 -->
                     <div class="portfolio-item group cursor-pointer md:mt-24 reveal-up" data-category="film">
                         <div class="relative overflow-hidden rounded-2xl aspect-square mb-6">
-                            <img src="/assets/images/projects/p02-noir-film/hero.jpg" alt="Origins" class="w-full h-full object-cover img-hover-scale">
+                            <img src="/assets/images/projects/p02/hero.jpg" alt="Origins" class="w-full h-full object-cover img-hover-scale">
                             <!-- Play button overlay -->
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                                <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
-                                    <i class="ph-fill ph-play text-3xl text-white ml-2"></i>
-                                </div>
-                            </div>
+                           
                             <div class="absolute top-6 left-6 px-4 py-1.5 rounded-full glass-card text-xs font-medium backdrop-blur-md z-10">
                                 Documentary Film
                             </div>
@@ -431,6 +581,120 @@
                 </div>
             </div>
         </section>
+
+        <section id="video-showcase" class="py-32 relative bg-em-surface border-t border-white/5">
+            <div class="max-w-[1600px] mx-auto px-6 md:px-12">
+                <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-14 reveal-up">
+                    <div>
+                        <p class="text-em-magenta text-sm font-bold tracking-widest uppercase mb-4">Motion Reel</p>
+                        <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tighter leading-tight">Recent Campaign Stories</h2>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button type="button" id="video-prev" class="w-12 h-12 rounded-full border border-white/15 bg-white/5 text-white hover:bg-white hover:text-black transition-all duration-300 link-hover flex items-center justify-center" aria-label="Previous video">
+                            <i class="ph ph-arrow-left text-xl"></i>
+                        </button>
+                        <button type="button" id="video-next" class="w-12 h-12 rounded-full border border-white/15 bg-white/5 text-white hover:bg-white hover:text-black transition-all duration-300 link-hover flex items-center justify-center" aria-label="Next video">
+                            <i class="ph ph-arrow-right text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="video-carousel reveal-up">
+                    <div id="video-track" class="video-track">
+                        <article class="video-slide" data-video="https://drive.google.com/file/d/1z-ahfDVtJsLC2AHTwnP8XXxOZ-AXOHTl/preview">
+                            <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_0.85fr] gap-8 items-center">
+                                <div class="video-frame aspect-video">
+                                    <iframe src="https://drive.google.com/file/d/1z-ahfDVtJsLC2AHTwnP8XXxOZ-AXOHTl/preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                    <button type="button" class="video-open-button open-video" data-video="https://drive.google.com/file/d/1z-ahfDVtJsLC2AHTwnP8XXxOZ-AXOHTl/preview" data-title="Ember Launch">
+                                        <i class="ph ph-arrows-out text-lg"></i>
+                                        Fullscreen
+                                    </button>
+                                </div>
+                                <div class="video-meta p-7 md:p-9 rounded-[28px]">
+                                    <p class="text-em-magenta text-xs uppercase tracking-[0.25em] font-medium mb-4">Featured Film</p>
+                                    <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Ember Launch</h3>
+                                    <p class="text-em-gray text-base md:text-lg leading-relaxed mb-6">
+                                        A cinematic launch film built for a premium brand moment — blending motion, art direction, and high-impact storytelling into a single, tactile campaign reveal.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-em-gray">
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Brand Film</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Campaign</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Motion</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="video-slide" data-video="https://drive.google.com/file/d/1D7EY3n3IFwJDJTO1P381C_GjNcO3Ny4f/preview">
+                            <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_0.85fr] gap-8 items-center">
+                                <div class="video-frame aspect-video">
+                                    <iframe src="https://drive.google.com/file/d/1D7EY3n3IFwJDJTO1P381C_GjNcO3Ny4f/preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                    <button type="button" class="video-open-button open-video" data-video="https://drive.google.com/file/d/1D7EY3n3IFwJDJTO1P381C_GjNcO3Ny4f/preview" data-title="Noir Film">
+                                        <i class="ph ph-arrows-out text-lg"></i>
+                                        Fullscreen
+                                    </button>
+                                </div>
+                                <div class="video-meta p-7 md:p-9 rounded-[28px]">
+                                    <p class="text-em-magenta text-xs uppercase tracking-[0.25em] font-medium mb-4">AI Storytelling</p>
+                                    <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Noir Film</h3>
+                                    <p class="text-em-gray text-base md:text-lg leading-relaxed mb-6">
+                                        An atmospheric short-form narrative exploring how AI-assisted art direction can elevate emotion, pacing, and cinematic detail without compromising the human story.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-em-gray">
+                                        <span class="border border-white/10 rounded-full px-3 py-2">AI Film</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Narrative</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Visual FX</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="video-slide" data-video="https://drive.google.com/file/d/1bdobowoEvl5o1X33CKiZGBXio_1cZVXh/preview">
+                            <div class="grid grid-cols-1 lg:grid-cols-[1.45fr_0.85fr] gap-8 items-center">
+                                <div class="video-frame aspect-video">
+                                    <iframe src="https://drive.google.com/file/d/1bdobowoEvl5o1X33CKiZGBXio_1cZVXh/preview" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                                    <button type="button" class="video-open-button open-video" data-video="https://drive.google.com/file/d/1bdobowoEvl5o1X33CKiZGBXio_1cZVXh/preview" data-title="Aurora Social">
+                                        <i class="ph ph-arrows-out text-lg"></i>
+                                        Fullscreen
+                                    </button>
+                                </div>
+                                <div class="video-meta p-7 md:p-9 rounded-[28px]">
+                                    <p class="text-em-magenta text-xs uppercase tracking-[0.25em] font-medium mb-4">Social Launch</p>
+                                    <h3 class="font-display text-3xl md:text-4xl font-bold mb-4">Aurora Social</h3>
+                                    <p class="text-em-gray text-base md:text-lg leading-relaxed mb-6">
+                                        A high-energy product and campaign motion system for social-first storytelling, optimized for scroll-stopping launch moments and repeatable content velocity.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em] text-em-gray">
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Social</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Launch</span>
+                                        <span class="border border-white/10 rounded-full px-3 py-2">Content</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center gap-3 mt-8 reveal-up" id="video-dots" aria-label="Video slide indicators">
+                    <button class="video-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="video-dot" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="video-dot" data-slide="2" aria-label="Go to slide 3"></button>
+                </div>
+            </div>
+        </section>
+
+        <div id="video-lightbox" class="video-lightbox" aria-hidden="true">
+            <div class="video-lightbox-backdrop" data-close-lightbox="true"></div>
+            <div class="video-lightbox-panel">
+                <button type="button" class="video-lightbox-close" aria-label="Close video" data-close-lightbox="true">
+                    <i class="ph ph-x text-2xl"></i>
+                </button>
+                <div class="video-lightbox-frame">
+                    <iframe id="video-lightbox-iframe" src="" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
 
         <section id="services" class="py-32 relative bg-em-surface border-t border-white/5">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12">
@@ -544,7 +808,7 @@
                                 <h3 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Create</h3>
                                 <p class="text-em-gray text-lg max-w-xl leading-relaxed mb-8">The magic happens here. Identity design, cinematic production, AI exploration, and copywriting merge to bring the strategy to life visually and verbally.</p>
                                 <div class="w-full max-w-xl h-48 bg-em-surface rounded-2xl border border-white/10 overflow-hidden relative">
-                                    <img src="/assets/images/projects/p01-ember-launch/gallery-01.jpg" class="w-full h-full object-cover opacity-50 mix-blend-luminosity">
+                                    <img src="/assets/images/projects/p01/gallery-01.png" class="w-full h-full object-cover opacity-50 mix-blend-luminosity">
                                 </div>
                             </div>
 
@@ -575,24 +839,28 @@
             <div class="flex flex-col gap-6">
                 <!-- Track 1 (Moves Left) -->
                 <div class="flex gap-6 w-[200vw] animate-[marquee_40s_linear_infinite] hover:[animation-play-state:paused]">
-                    <img src="/assets/images/projects/p03-studio-alchemy/gallery-01.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p03-studio-alchemy/gallery-02.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p04-aurora-social/gallery-01.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/brand/logo-mark.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va1.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va2.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va3.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va4.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va5.svg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va6.svg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                     <!-- Duplicates for loop -->
-                                        <img src="/assets/images/projects/p03-studio-alchemy/gallery-01.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p03-studio-alchemy/gallery-02.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va1.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va2.jpg" class="h-[300px] md:h-[400px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                 </div>
                 
                 <!-- Track 2 (Moves Right) -->
                 <div class="flex gap-6 w-[200vw] animate-[marquee_50s_linear_infinite_reverse] hover:[animation-play-state:paused] -ml-[50vw]">
-                    <img src="/assets/images/projects/p02-noir-film/gallery-01.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p02-noir-film/gallery-02.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p02-noir-film/gallery-03.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p01-ember-launch/gallery-02.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va7.svg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va8.png" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va9.svg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va10.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va3.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va4.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                     <!-- Duplicates for loop -->
-                                        <img src="/assets/images/projects/p02-noir-film/gallery-01.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
-                                        <img src="/assets/images/projects/p02-noir-film/gallery-02.jpg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va7.svg" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
+                    <img src="/assets/images/visual-archives/va8.png" class="h-[250px] md:h-[350px] w-auto object-cover rounded-xl grayscale hover:grayscale-0 transition-all duration-500 cursor-none link-hover">
                 </div>
             </div>
             
@@ -673,7 +941,7 @@
         <section id="about" class="py-32 relative bg-em-black">
             <div class="max-w-[1600px] mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 items-center">
                 <div class="w-full md:w-1/2 reveal-up">
-                    <img src="/assets/images/projects/p06-sierra-studio/hero.jpg" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover grayscale opacity-80">
+                    <img src="/assets/images/projects/p06/hero.jpg" alt="EM Studios Culture" class="rounded-2xl w-full h-auto object-cover grayscale opacity-80">
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="font-display text-4xl md:text-6xl font-bold tracking-tighter mb-8 reveal-up">Modern African Excellence on a Global Stage.</h2>
@@ -813,14 +1081,14 @@
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-20">
                     <div class="md:col-span-2">
                         <a href="#" class="text-4xl font-display font-bold tracking-tighter text-white mb-6 block link-hover">
-                            EM<span class="text-em-magenta">.</span>
+                            <img src="/assets/images/brand/logo-primary.svg" alt="EM Studios" class="h-8 md:h-10 object-contain" />
                         </a>
                         <p class="text-em-gray max-w-sm mb-8">Crafting Stories. Building Brands. A premium brand management and creative agency based in Lagos.</p>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph-logo-instagram text-xl"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph-logo-twitter-logo text-xl"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph-logo-linkedin text-xl"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph-logo-behance text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph ph-instagram-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph ph-twitter-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph ph-linkedin-logo text-xl"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-colors link-hover"><i class="ph ph-behance-logo text-xl"></i></a>
                         </div>
                     </div>
                     
@@ -1053,7 +1321,107 @@
                 });
             });
 
-            // 8. Mobile Menu Logic
+            // 8. Video Carousel Logic
+            const videoTrack = document.getElementById('video-track');
+            const videoSlides = Array.from(document.querySelectorAll('.video-slide'));
+            const videoDots = Array.from(document.querySelectorAll('.video-dot'));
+            const videoPrev = document.getElementById('video-prev');
+            const videoNext = document.getElementById('video-next');
+            const videoLightbox = document.getElementById('video-lightbox');
+            const videoLightboxIframe = document.getElementById('video-lightbox-iframe');
+            let currentVideo = 0;
+            let videoTimer;
+
+            function updateVideoSlider(index) {
+                currentVideo = (index + videoSlides.length) % videoSlides.length;
+
+                gsap.to(videoTrack, {
+                    xPercent: -currentVideo * 100,
+                    duration: 1.2,
+                    ease: 'expo.inOut'
+                });
+
+                gsap.to(videoSlides, {
+                    duration: 0.7,
+                    scale: 0.97,
+                    autoAlpha: 0.72,
+                    filter: 'saturate(0.7)',
+                    ease: 'power2.out',
+                    onComplete: () => {
+                        gsap.to(videoSlides[currentVideo], {
+                            duration: 0.9,
+                            scale: 1,
+                            autoAlpha: 1,
+                            filter: 'saturate(1.1)',
+                            ease: 'power3.out'
+                        });
+                    }
+                });
+
+                videoDots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentVideo);
+                });
+            }
+
+            function startVideoCarousel() {
+                clearInterval(videoTimer);
+                videoTimer = setInterval(() => {
+                    updateVideoSlider(currentVideo + 1);
+                }, 10000);
+            }
+
+            videoPrev.addEventListener('click', () => {
+                updateVideoSlider(currentVideo - 1);
+                startVideoCarousel();
+            });
+
+            videoNext.addEventListener('click', () => {
+                updateVideoSlider(currentVideo + 1);
+                startVideoCarousel();
+            });
+
+            videoDots.forEach((dot) => {
+                dot.addEventListener('click', () => {
+                    updateVideoSlider(Number(dot.dataset.slide));
+                    startVideoCarousel();
+                });
+            });
+
+            document.querySelectorAll('.open-video').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const src = button.dataset.video;
+                    const title = button.dataset.title || 'Campaign Video';
+                    if (src) {
+                        videoLightboxIframe.src = src;
+                        videoLightbox.classList.add('open');
+                        videoLightbox.setAttribute('aria-hidden', 'false');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            function closeVideoLightbox() {
+                videoLightbox.classList.remove('open');
+                videoLightbox.setAttribute('aria-hidden', 'true');
+                videoLightboxIframe.src = '';
+                document.body.style.overflow = '';
+            }
+
+            document.querySelectorAll('[data-close-lightbox="true"]').forEach((el) => {
+                el.addEventListener('click', closeVideoLightbox);
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && videoLightbox.classList.contains('open')) {
+                    closeVideoLightbox();
+                }
+            });
+
+            gsap.set(videoSlides, { autoAlpha: 1, filter: 'saturate(0.75)', transformPerspective: 1400, rotateY: -8, scale: 0.98 });
+            updateVideoSlider(0);
+            startVideoCarousel();
+
+            // 9. Mobile Menu Logic
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
