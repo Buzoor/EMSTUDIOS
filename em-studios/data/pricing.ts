@@ -1,72 +1,136 @@
 export type PricingTier = {
+  number: string;
   title: string;
   subtitle: string;
-  price: string;
-  description: string;
+  price?: string;
+  strategy: string[];
   deliverables: string[];
-  timeline: string;
+  totalOutput: string;
   idealFor: string;
-  cta: string;
-  accent: string;
+  featured?: boolean;
 };
 
 export const pricing: PricingTier[] = [
   {
-    title: "STARTER",
-    subtitle: "For emerging brands building their foundation.",
-    price: "From $12,500",
-    description:
-      "A design-first package for ambitious founders that need a strong brand platform and launch toolkit.",
-    deliverables: [
-      "Brand positioning brief",
-      "Visual identity system",
-      "Brand guidelines overview",
-      "Social launch assets",
+    number: "01",
+    title: "ESSENTIAL",
+    subtitle: "For brands that need consistent, strategic creative output.",
+    price: "$500 / MONTH",
+    strategy: [
+      "Monthly creative strategy",
+      "Content direction",
+      "Monthly creative planning",
+      "Brand communication direction",
+      "Creative consultation",
     ],
-    timeline: "4-6 weeks",
-    idealFor: "Emerging brands, founders, product launches",
-    cta: "BEGIN WITH STARTER",
-    accent: "magenta",
+    deliverables: [
+      "12 social media designs",
+      "4 carousel designs",
+      "4 promotional creatives",
+      "4 short-form video edits",
+      "4 content copy/captions",
+      "1 campaign concept",
+      "1 campaign key visual",
+      "1 monthly content plan",
+    ],
+    totalOutput: "Up to 29 creative deliverables / month",
+    idealFor: "Small businesses, startups and growing brands building consistency.",
   },
   {
+    number: "02",
     title: "GROWTH",
-    subtitle: "For established brands strengthening their voice.",
-    price: "From $28,000",
-    description:
-      "A strategic, storytelling-led package to sharpen your identity, campaigns and content.",
-    deliverables: [
-      "Brand strategy and messaging",
-      "Identity refinement",
-      "Campaign concepts",
-      "Social and video assets",
+    subtitle: "For brands ready to increase their creative presence and visibility.",
+    price: "$850 / MONTH",
+    strategy: [
+      "Everything in Essential, plus:",
+      "Campaign strategy",
+      "Audience insight",
+      "Creative concepts",
+      "Competitor/market creative review",
+      "Monthly creative direction session",
     ],
-    timeline: "8-10 weeks",
-    idealFor: "Ambitious businesses, product expansions, repositioning",
-    cta: "EXPLORE GROWTH",
-    accent: "purple",
+    deliverables: [
+      "16 social media designs",
+      "6 carousel designs",
+      "6 promotional creatives",
+      "6 short-form video edits",
+      "6 content copy/captions",
+      "2 campaign concepts",
+      "2 campaign key visuals",
+      "2 campaign creative adaptations",
+      "1 campaign content plan",
+      "1 creative performance review",
+    ],
+    totalOutput: "Up to 47 creative deliverables / month",
+    idealFor: "Growing brands that need stronger creative volume and campaign support.",
   },
   {
-    title: "PREMIUM",
-    subtitle: "For ambitious brands seeking a full creative partner.",
-    price: "From $55,000",
-    description:
-      "A deep brand management package that combines strategy, film, design and AI-powered production.",
-    deliverables: [
-      "Full brand system",
-      "Campaign and film direction",
-      "Digital experience design",
-      "Ongoing brand management support",
+    number: "03",
+    title: "SIGNATURE",
+    subtitle: "For brands that want premium creative and strategic firepower.",
+    price: "$1,500 / MONTH",
+    featured: true,
+    strategy: [
+      "Everything in Growth, plus:",
+      "Brand communication strategy",
+      "Campaign architecture",
+      "Audience & competitor insights",
+      "Creative storytelling strategy",
+      "Visual direction",
+      "Quarterly creative planning",
     ],
-    timeline: "12+ weeks",
-    idealFor: "High-growth brands, category challengers, culture-driving campaigns",
-    cta: "REQUEST PREMIUM",
-    accent: "crimson",
+    deliverables: [
+      "20 social media designs",
+      "8 carousel designs",
+      "8 promotional creatives",
+      "8 short-form video edits",
+      "8 content copy/captions",
+      "3 campaign concepts",
+      "3 campaign key visuals",
+      "6 campaign adaptations",
+      "2 campaign content plans",
+      "2 premium creative concepts",
+      "1 brand storytelling concept",
+      "1 creative direction board",
+    ],
+    totalOutput: "Up to 67 creative deliverables / month",
+    idealFor: "Established brands, organisations and businesses competing for attention in crowded markets.",
+  },
+  {
+    number: "04",
+    title: "CREATIVE PARTNERSHIP",
+    subtitle: "For brands that need an external creative team, not just a content supplier.",
+    strategy: [
+      "Everything in Signature, plus:",
+      "Brand communication strategy",
+      "Integrated campaign strategy",
+      "Quarterly brand & creative planning",
+      "Market and audience intelligence",
+      "Creative campaign direction",
+      "Concept development",
+      "Art direction",
+      "Strategic creative consulting",
+      "Priority creative support",
+    ],
+    deliverables: [
+      "24+ social media designs",
+      "10+ carousel designs",
+      "10+ promotional creatives",
+      "10+ short-form video edits",
+      "10+ content copy/captions",
+      "4 campaign concepts",
+      "4 campaign key visuals",
+      "8+ campaign adaptations",
+      "3 campaign content plans",
+      "2 premium campaign concepts",
+      "Brand storytelling assets",
+      "Creative direction boards",
+      "Campaign launch materials",
+      "Presentation/pitch deck design",
+      "Event/promotional creative materials",
+      "Additional bespoke creative assets based on campaign requirements",
+    ],
+    totalOutput: "50+ core creative assets / month",
+    idealFor: "Ambitious businesses and organisations that want EM Studios operating as an extension of their internal team.",
   },
 ];
-
-export const customProposal = {
-  label: "CUSTOM PROJECTS",
-  tagline:
-    "For campaigns, large-scale branding, films and long-term brand management.",
-  cta: "REQUEST A CUSTOM PROPOSAL →",
-};
