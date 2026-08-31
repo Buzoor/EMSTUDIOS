@@ -18,6 +18,11 @@ export const metadata: Metadata = {
   title: "EM Studios — Crafting Stories, Building Brands",
   description:
     "EM Studios is a premium African brand management and creative agency — strategy, storytelling, design, filmmaking and AI-powered creativity.",
+  icons: {
+    icon: "/assets/images/brand/favicon.svg",
+    shortcut: "/assets/images/brand/favicon.svg",
+    apple: "/assets/images/brand/favicon.svg",
+  },
   openGraph: {
     title: "EM Studios",
     description:
